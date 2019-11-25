@@ -22,7 +22,8 @@ namespace lab4_1
     
         public System.Guid ClientAccountID { get; set; }
         public System.Guid ClientID { get; set; }
-        public decimal FiatMoney { get; set; }
+        public decimal AccountMoney { get; set; }
+        public string AccountName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AccountAsset> AccountAssets { get; set; }

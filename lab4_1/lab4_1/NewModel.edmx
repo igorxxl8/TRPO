@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TRPOModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountAsset">
+          <Key>
+            <PropertyRef Name="AssetID" />
+          </Key>
+          <Property Name="AssetID" Type="bigint" Nullable="false" />
+          <Property Name="ClientAccountID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AssetHolderID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TokensCount" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssetHolder">
+          <Key>
+            <PropertyRef Name="AssetHolderID" />
+          </Key>
+          <Property Name="AssetHolderID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AvailaibleTokens" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="Passowrd" Type="varchar" MaxLength="88" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientAccount">
+          <Key>
+            <PropertyRef Name="ClientAccountID" />
+          </Key>
+          <Property Name="ClientAccountID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AccountMoney" Type="money" Nullable="false" />
+          <Property Name="AccountName" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AccountAsset_AssetHolder">
+          <End Role="AssetHolder" Type="Self.AssetHolder" Multiplicity="1" />
+          <End Role="AccountAsset" Type="Self.AccountAsset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssetHolder">
+              <PropertyRef Name="AssetHolderID" />
+            </Principal>
+            <Dependent Role="AccountAsset">
+              <PropertyRef Name="AssetHolderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountAsset_ClientAccount">
+          <End Role="ClientAccount" Type="Self.ClientAccount" Multiplicity="1" />
+          <End Role="AccountAsset" Type="Self.AccountAsset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientAccount">
+              <PropertyRef Name="ClientAccountID" />
+            </Principal>
+            <Dependent Role="AccountAsset">
+              <PropertyRef Name="ClientAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientAccount_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="ClientAccount" Type="Self.ClientAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientAccount">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TRPOModel1StoreContainer">
+          <EntitySet Name="AccountAsset" EntityType="Self.AccountAsset" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssetHolder" EntityType="Self.AssetHolder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientAccount" EntityType="Self.ClientAccount" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AccountAsset_AssetHolder" Association="Self.FK_AccountAsset_AssetHolder">
+            <End Role="AssetHolder" EntitySet="AssetHolder" />
+            <End Role="AccountAsset" EntitySet="AccountAsset" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountAsset_ClientAccount" Association="Self.FK_AccountAsset_ClientAccount">
+            <End Role="ClientAccount" EntitySet="ClientAccount" />
+            <End Role="AccountAsset" EntitySet="AccountAsset" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientAccount_Client" Association="Self.FK_ClientAccount_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientAccount" EntitySet="ClientAccount" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TRPOModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccountAsset">
+          <Key>
+            <PropertyRef Name="AssetID" />
+          </Key>
+          <Property Name="AssetID" Type="Int64" Nullable="false" />
+          <Property Name="ClientAccountID" Type="Guid" Nullable="false" />
+          <Property Name="AssetHolderID" Type="Guid" Nullable="false" />
+          <Property Name="TokensCount" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="AssetHolder" Relationship="Self.FK_AccountAsset_AssetHolder" FromRole="AccountAsset" ToRole="AssetHolder" />
+          <NavigationProperty Name="ClientAccount" Relationship="Self.FK_AccountAsset_ClientAccount" FromRole="AccountAsset" ToRole="ClientAccount" />
+        </EntityType>
+        <EntityType Name="AssetHolder">
+          <Key>
+            <PropertyRef Name="AssetHolderID" />
+          </Key>
+          <Property Name="AssetHolderID" Type="Guid" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AvailaibleTokens" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="AccountAssets" Relationship="Self.FK_AccountAsset_AssetHolder" FromRole="AssetHolder" ToRole="AccountAsset" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Passowrd" Type="String" MaxLength="88" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ClientAccounts" Relationship="Self.FK_ClientAccount_Client" FromRole="Client" ToRole="ClientAccount" />
+        </EntityType>
+        <EntityType Name="ClientAccount">
+          <Key>
+            <PropertyRef Name="ClientAccountID" />
+          </Key>
+          <Property Name="ClientAccountID" Type="Guid" Nullable="false" />
+          <Property Name="ClientID" Type="Guid" Nullable="false" />
+          <Property Name="AccountMoney" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="AccountName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AccountAssets" Relationship="Self.FK_AccountAsset_ClientAccount" FromRole="ClientAccount" ToRole="AccountAsset" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_ClientAccount_Client" FromRole="ClientAccount" ToRole="Client" />
+        </EntityType>
+        <Association Name="FK_AccountAsset_AssetHolder">
+          <End Role="AssetHolder" Type="Self.AssetHolder" Multiplicity="1" />
+          <End Role="AccountAsset" Type="Self.AccountAsset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssetHolder">
+              <PropertyRef Name="AssetHolderID" />
+            </Principal>
+            <Dependent Role="AccountAsset">
+              <PropertyRef Name="AssetHolderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountAsset_ClientAccount">
+          <End Role="ClientAccount" Type="Self.ClientAccount" Multiplicity="1" />
+          <End Role="AccountAsset" Type="Self.AccountAsset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientAccount">
+              <PropertyRef Name="ClientAccountID" />
+            </Principal>
+            <Dependent Role="AccountAsset">
+              <PropertyRef Name="ClientAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientAccount_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="ClientAccount" Type="Self.ClientAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientAccount">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TRPOEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountAssets" EntityType="Self.AccountAsset" />
+          <EntitySet Name="AssetHolders" EntityType="Self.AssetHolder" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="ClientAccounts" EntityType="Self.ClientAccount" />
+          <AssociationSet Name="FK_AccountAsset_AssetHolder" Association="Self.FK_AccountAsset_AssetHolder">
+            <End Role="AssetHolder" EntitySet="AssetHolders" />
+            <End Role="AccountAsset" EntitySet="AccountAssets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountAsset_ClientAccount" Association="Self.FK_AccountAsset_ClientAccount">
+            <End Role="ClientAccount" EntitySet="ClientAccounts" />
+            <End Role="AccountAsset" EntitySet="AccountAssets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientAccount_Client" Association="Self.FK_ClientAccount_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="ClientAccount" EntitySet="ClientAccounts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TRPOModel1StoreContainer" CdmEntityContainer="TRPOEntities1">
+          <EntitySetMapping Name="AccountAssets">
+            <EntityTypeMapping TypeName="TRPOModel1.AccountAsset">
+              <MappingFragment StoreEntitySet="AccountAsset">
+                <ScalarProperty Name="AssetID" ColumnName="AssetID" />
+                <ScalarProperty Name="ClientAccountID" ColumnName="ClientAccountID" />
+                <ScalarProperty Name="AssetHolderID" ColumnName="AssetHolderID" />
+                <ScalarProperty Name="TokensCount" ColumnName="TokensCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssetHolders">
+            <EntityTypeMapping TypeName="TRPOModel1.AssetHolder">
+              <MappingFragment StoreEntitySet="AssetHolder">
+                <ScalarProperty Name="AssetHolderID" ColumnName="AssetHolderID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="AvailaibleTokens" ColumnName="AvailaibleTokens" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="TRPOModel1.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Passowrd" ColumnName="Passowrd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientAccounts">
+            <EntityTypeMapping TypeName="TRPOModel1.ClientAccount">
+              <MappingFragment StoreEntitySet="ClientAccount">
+                <ScalarProperty Name="ClientAccountID" ColumnName="ClientAccountID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="AccountMoney" ColumnName="AccountMoney" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

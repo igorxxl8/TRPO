@@ -26,6 +26,7 @@ namespace lab4_1
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public byte[] Photo { get; set; }
+        public string Passowrd { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientAccount> ClientAccounts { get; set; }

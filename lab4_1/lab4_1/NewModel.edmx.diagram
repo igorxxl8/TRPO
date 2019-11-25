@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="95a1a770907c464ebeb066484bf3e518" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="TRPOModel1.AccountAsset" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRPOModel1.AssetHolder" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRPOModel1.Client" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRPOModel1.ClientAccount" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="TRPOModel1.FK_AccountAsset_AssetHolder" ManuallyRouted="false" />
+        <AssociationConnector Association="TRPOModel1.FK_AccountAsset_ClientAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="TRPOModel1.FK_ClientAccount_Client" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
