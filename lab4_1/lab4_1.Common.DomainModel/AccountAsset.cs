@@ -15,7 +15,7 @@ namespace lab4_1.Common.DomainModel
     public partial class AccountAsset
     {
         public long AssetID { get; set; }
-        public System.Guid ClientAccountID { get; set; }
+        public System.Guid? ClientAccountID { get; set; }
         public System.Guid AssetHolderID { get; set; }
         public long TokensCount { get; set; }
     

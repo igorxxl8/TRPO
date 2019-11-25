@@ -41,11 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contexts\DbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AccountAssetRepository.cs" />
     <Compile Include="Repositories\AssetHolderRepository.cs" />
     <Compile Include="Repositories\ClientAccountRepository.cs" />
     <Compile Include="Repositories\ClientRepository.cs" />
+    <Compile Include="Repositories\Mock\MockAccountAssetRepository.cs" />
+    <Compile Include="Repositories\Mock\MockAssetHolderRepository.cs" />
+    <Compile Include="Repositories\Mock\MockClientAccountRepository.cs" />
+    <Compile Include="Repositories\Mock\MockClientRepository.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

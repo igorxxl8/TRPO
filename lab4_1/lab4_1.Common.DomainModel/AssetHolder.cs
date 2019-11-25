@@ -20,7 +20,7 @@ namespace lab4_1.Common.DomainModel
             this.AccountAssets = new HashSet<AccountAsset>();
         }
     
-        public System.Guid AssetHolderID { get; set; }
+        public System.Guid? AssetHolderID { get; set; }
         public string CompanyName { get; set; }
         public long AvailaibleTokens { get; set; }
     

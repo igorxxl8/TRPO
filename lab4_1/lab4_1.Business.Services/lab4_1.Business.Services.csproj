@@ -46,6 +46,7 @@
     <Compile Include="ClientAccountService.cs" />
     <Compile Include="ClientService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\lab4_1.Common.Core\lab4_1.Common.Core.csproj">

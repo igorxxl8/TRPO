@@ -20,9 +20,10 @@ namespace lab4_1.Common.DomainModel
             this.AccountAssets = new HashSet<AccountAsset>();
         }
     
-        public System.Guid ClientAccountID { get; set; }
+        public System.Guid? ClientAccountID { get; set; }
         public System.Guid ClientID { get; set; }
-        public decimal FiatMoney { get; set; }
+        public string AccountName { get; set; }
+        public decimal AccountMoney { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AccountAsset> AccountAssets { get; set; }

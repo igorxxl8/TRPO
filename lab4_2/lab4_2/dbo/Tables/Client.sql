@@ -6,5 +6,6 @@
     [PhoneNumber] VARCHAR(30) NOT NULL, 
     [Email] VARCHAR(30) NOT NULL, 
     [Photo] VARBINARY(MAX) NULL, 
+    [Passowrd] VARCHAR(88) NOT NULL, 
     CONSTRAINT [PK_Client] PRIMARY KEY CLUSTERED ([ClientID] ASC)
 )

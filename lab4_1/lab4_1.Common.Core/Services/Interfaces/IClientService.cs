@@ -1,12 +1,13 @@
-﻿using System;
+﻿using lab4_1.Common.DomainModel;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace lab4_1.Common.Core.Services.Interfaces
 {
     public interface IClientService
     {
+        bool RegisterClient(Client client);
+        bool TryLogin(string email, string password);
+
+        ICollection<Client> GetClients();
     }
 }

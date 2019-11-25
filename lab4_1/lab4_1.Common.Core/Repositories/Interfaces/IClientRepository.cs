@@ -1,12 +1,12 @@
-﻿using System;
+﻿using lab4_1.Common.DomainModel;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace lab4_1.Common.Core.Repositories.Interfaces
 {
     public interface IClientRepository
     {
+        ICollection<Client> GetClients();
+        bool RegisterClient(Client client);
+        bool TryLogin(string email, string password);
     }
 }

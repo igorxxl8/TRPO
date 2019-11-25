@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\Interfaces\IPrincipalProvider.cs" />
+    <Compile Include="Providers\Interfaces\IServiceProvider.cs" />
     <Compile Include="Repositories\Interfaces\IAccountAssetRepository.cs" />
     <Compile Include="Repositories\Interfaces\IAssetHolderRepository.cs" />
     <Compile Include="Repositories\Interfaces\IClientAccountRepository.cs" />
@@ -54,6 +56,12 @@
   <ItemGroup>
     <Folder Include="Presenters\Interfaces\" />
     <Folder Include="ViewModels\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\lab4_1.Common.DomainModel\lab4_1.Common.DomainModel.csproj">
+      <Project>{7e56024d-bdfb-458e-83a9-761527afb6de}</Project>
+      <Name>lab4_1.Common.DomainModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

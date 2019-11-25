@@ -1,13 +1,12 @@
 ﻿using lab4_1.Common.Core.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using lab4_1.Data.DataAccess.Contexts;
 
 namespace lab4_1.Data.DataAccess.Repositories
 {
-    public class AccountAssetRepository : IAccountAssetRepository
+    public class AccountAssetRepository : RepositoryBase, IAccountAssetRepository
     {
+        public AccountAssetRepository(DbContext context) : base(context)
+        {
+        }
     }
 }
