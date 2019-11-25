@@ -34,15 +34,15 @@
 
 Результат работы:
 Документ с техническим заданием: ![](/lab2/ТРПО_ТЗ_Криптобиржа.docx)
-![](/lab2/img/1.png)
-![](/lab2/img/2.png)
-![](/lab2/img/3.png)
-![](/lab2/img/4.png)
-![](/lab2/img/5.png)
-![](/lab2/img/6.png)
-![](/lab2/img/7.png)
-![](/lab2/img/8.png)
-![](/lab2/img/9.png)
+![](/lab2/images/1.png)
+![](/lab2/images/2.png)
+![](/lab2/images/3.png)
+![](/lab2/images/4.png)
+![](/lab2/images/5.png)
+![](/lab2/images/6.png)
+![](/lab2/images/7.png)
+![](/lab2/images/8.png)
+![](/lab2/images/9.png)
 
 
 ## <a name="LR3"></a> ЛР3
