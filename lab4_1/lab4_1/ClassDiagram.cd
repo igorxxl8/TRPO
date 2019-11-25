@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="lab4_1.AccountAsset" Collapsed="true">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAADAAAAAAAAAAAACCAAAAAAAAhAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainModel\AccountAsset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab4_1.AssetHolder" Collapsed="true">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAACAAAAAAAAAAAAEAAAAAAIAA=</HashCode>
+      <FileName>DomainModel\AssetHolder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab4_1.Client" Collapsed="true">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACIAACAAAAAAQAAAAAAAAAAACAAAAAAAAAg=</HashCode>
+      <FileName>DomainModel\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab4_1.ClientAccount" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAIAIAAAAAAAAAAAAAAAAAAAAEAAAAAAAAQ=</HashCode>
+      <FileName>DomainModel\ClientAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
