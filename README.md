@@ -302,4 +302,4 @@ namespace lab4_1.Tests
 ```
 
 Результаты тестов:    
-[](/lab5/img/test_result.PNG)
+![](/lab5/img/test_result.PNG)
