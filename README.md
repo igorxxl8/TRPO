@@ -46,21 +46,92 @@
 
 
 ## <a name="LR3"></a> ЛР3
-### Разработать требования к изделию (ТЗ)
+### Описать в табличном и текстовом спец виде USE CASE для реализации требований.
 
 Результат работы:
 
 ## <a name="LR4_1"></a> ЛР4.1
-### Разработать требования к изделию (ТЗ)
+### На языке UML спроектировать ПО:
+- написать USE CASE для тербований
+- промоделировать реализацию use case с помощью и 
+- перейти и выполнить моделирование с помощью диаграммы классов, получить код для реализации.
+- построить диаграмму компонент из диаграм классов
+- получить приложение и показать его работу
 
 Результат работы:
 
 ## <a name="LR4_2"></a> ЛР4.2
-### Разработать требования к изделию (ТЗ)
+### На языке IDEF1X спроектировать БД, сгенерировать DDL и отчеты, построить БД, котороая будет применяться в п. 4.1.
 
-Результат работы:
+Результат работы:   
+IDEF1X:
+![](/lab4_2/img/diagram.png)
+
+DDL:
+Client:
+``` SQL
+
+CREATE TABLE [dbo].[Client]
+(
+	[ClientID] UNIQUEIDENTIFIER NOT NULL, 
+    [FirstName] VARCHAR(30) NOT NULL, 
+    [LastName] VARCHAR(30) NOT NULL, 
+    [PhoneNumber] VARCHAR(30) NOT NULL, 
+    [Email] VARCHAR(30) NOT NULL, 
+    [Photo] VARBINARY(MAX) NULL, 
+    CONSTRAINT [PK_Client] PRIMARY KEY CLUSTERED ([ClientID] ASC)
+)
+
+
+```
+
+ClientAccount:
+``` SQL
+
+CREATE TABLE [dbo].[ClientAccount]
+(
+	[ClientAccountID] UNIQUEIDENTIFIER NOT NULL, 
+    [ClientID] UNIQUEIDENTIFIER NOT NULL, 
+    [FiatMoney] MONEY NOT NULL, 
+    CONSTRAINT [PK_ClientAccount] PRIMARY KEY CLUSTERED ([ClientAccountID] ASC), 
+    CONSTRAINT [FK_ClientAccount_Client] FOREIGN KEY ([ClientID]) REFERENCES [dbo].[Client]([ClientID])
+)
+
+
+```
+
+AccountAsset:
+``` SQL
+
+CREATE TABLE [dbo].[AccountAsset]
+(
+	[AssetID] BIGINT NOT NULL, 
+    [ClientAccountID] UNIQUEIDENTIFIER NOT NULL, 
+    [AssetHolderID] UNIQUEIDENTIFIER NOT NULL, 
+    [TokensCount] BIGINT NOT NULL, 
+    CONSTRAINT [PK_AccountAsset] PRIMARY KEY CLUSTERED ([AssetID] ASC), 
+    CONSTRAINT [FK_AccountAsset_ClientAccount] FOREIGN KEY ([ClientAccountID]) REFERENCES [dbo].[ClientAccount]([ClientAccountID]), 
+    CONSTRAINT [FK_AccountAsset_AssetHolder] FOREIGN KEY ([AssetHolderID]) REFERENCES [dbo].[AssetHolder]([AssetHolderID])
+)
+
+
+```
+
+AssetHolder:
+``` SQL
+
+CREATE TABLE [dbo].[AssetHolder]
+(
+	[AssetHolderID] UNIQUEIDENTIFIER NOT NULL, 
+    [CompanyName] VARCHAR(50) NOT NULL, 
+    [AvailaibleTokens] BIGINT NOT NULL, 
+    CONSTRAINT [PK_AssetHolder] PRIMARY KEY ([AssetHolderID])
+)
+
+```
+
 
 ## <a name="LR5"></a> ЛР5
-### Разработать требования к изделию (ТЗ)
+### Выполнить тестирование по любому критерию.
 
 Результат работы:
